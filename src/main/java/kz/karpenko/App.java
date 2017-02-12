@@ -1,6 +1,11 @@
 package kz.karpenko;
 
-import kz.karpenko.text.*;
+import kz.karpenko.io.IO;
+import kz.karpenko.parser.Parser;
+import kz.karpenko.service.TextService;
+import kz.karpenko.text.TextComponent;
+
+import java.util.regex.Matcher;
 
 /**
  * Hello world!
@@ -8,20 +13,8 @@ import kz.karpenko.text.*;
 public class App {
     public static void main(String[] args) {
 
-        Text text = new Text("Text.txt");
-
-        Paragraph paragraph = new Paragraph(text);
-        System.out.println(paragraph.toString());
-
-        Sentence sentence = new Sentence(paragraph);
-        System.out.println(sentence.toString());
-
-        Word word = new Word(sentence);
-        System.out.println(word.toString());
-
-        Symbol symbol = new Symbol(sentence);
-        System.out.println(symbol.toString());
-
-
+        Parser parser = new Parser();
+        TextComponent parsed = parser.parseText(IO.getFile("src/main/resources/Text.txt"));
+        IO.writeFile(parsed.toString(), "ParsedText.txt");
     }
 }
