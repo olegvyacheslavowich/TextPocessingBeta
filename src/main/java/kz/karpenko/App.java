@@ -15,6 +15,6 @@ public class App {
 
         Parser parser = new Parser();
         TextComponent parsed = parser.parseText(IO.getFile("src/main/resources/Text.txt"));
-        IO.writeFile(parsed.toString(), "ParsedText.txt");
+        IO.writeFile(parsed.toString(), "src/main/resources/ParsedText.txt");
     }
 }
